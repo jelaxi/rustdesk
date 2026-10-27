@@ -3,6 +3,10 @@ name: Build the flutter version of the RustDesk
 on:
   workflow_call:
     inputs:
+      target_env:
+        description: "build environment"
+        required: false
+        type: string
       upload-artifact:
         type: boolean
         default: true
@@ -153,6 +157,7 @@ jobs:
     name: ${{ matrix.job.target }}
     needs: [build-RustDeskTempTopMostWindow, generate-bridge]
     runs-on: ${{ matrix.job.os }}
+    environment: ${{ inputs.target_env }}
     strategy:
       fail-fast: false
       matrix:
