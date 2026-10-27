@@ -26,6 +26,6 @@ on:
 jobs:
   run-ci:
     uses: ./.github/workflows/flutter-build.yml
-    environment: ${{ inputs.target_env }}
     with:
+      target_env: ${{ inputs.target_env }}
       upload-artifact: false
