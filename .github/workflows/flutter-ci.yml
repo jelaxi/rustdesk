@@ -2,6 +2,10 @@ name: Full Flutter CI
 
 on:
   workflow_dispatch:
+    inputs:
+      target_env:
+        description: "Choose env"
+        default: "rdkn"
   pull_request:
     paths-ignore:
     - "docs/**"
