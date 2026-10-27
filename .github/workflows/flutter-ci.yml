@@ -2,6 +2,12 @@ name: Full Flutter CI
 
 on:
   workflow_dispatch:
+    inputs:
+      target_env:
+        description: "Build environment"
+        required: true
+        type: environment
+        default: "rdkn"
   pull_request:
     paths-ignore:
     - "docs/**"
@@ -21,4 +27,5 @@ jobs:
   run-ci:
     uses: ./.github/workflows/flutter-build.yml
     with:
+      environment: ${{ inputs.target_env }}
       upload-artifact: false
